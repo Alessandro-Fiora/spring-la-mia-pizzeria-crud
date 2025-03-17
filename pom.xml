@@ -63,17 +63,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- * WEBJARS -->
+
+		<!-- ^ Bootstrap -->
+		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>5.3.3</version>
+		</dependency>
 	</dependencies>
 
-	<!-- * WEBJARS -->
-
-	<!-- ^ Bootstrap -->
-	<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
-	<dependency>
-		<groupId>org.webjars</groupId>
-		<artifactId>bootstrap</artifactId>
-		<version>5.3.3</version>
-	</dependency>
 
 
 	<build>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources</title>
+  </head>
+  <body>
+    <th:block th:fragment="styling">
+      <!-- * BOOTSTRAP CSS -->
+      <link
+        th:rel="stylesheet"
+        th:href="@{webjars/bootstrap/5.3.3/css/bootstrap.min.css}"
+      />
+      <!-- * CUSTOM CSS -->
+      <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    </th:block>
+
+    <th:block th:fragment="bootstrapJs">
+      <script th:src="@{webjars/bootstrap/5.3.3/js/bootstrap.min.js}"></script>
+    </th:block>
+  </body>
+</html>

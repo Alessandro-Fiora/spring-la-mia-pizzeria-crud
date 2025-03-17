@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <th:block th:replace="~{fragments/resources :: styling}" />
+    <title>Pizzeria</title>
+  </head>
+  <body>
+    <header>
+      <th:block th:replace="fragments/navbar" />
+    </header>
+    <main>
+      <div class="container">
+        <section class="text-center my-5">
+          <h1>Benvenuti nella pizzeria più buona del mondo</h1>
+          <p class="w-75 m-auto mt-5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+            praesentium soluta et? Neque doloremque, architecto debitis facere
+            illum magni accusantium ipsum consequuntur rem non voluptatem ut est
+            hic, alias accusamus!
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <th:block th:replace="~{fragments/resources :: bootstrapJs}"></th:block>
+  </body>
+</html>
