@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <th:block th:replace="~{fragments/resources :: styling}" />
+    <title>Pizzeria</title>
+  </head>
+  <body>
+    <header>
+      <th:block th:replace="~{fragments/navbar}" />
+    </header>
+    <main>
+      <div class="container">
+        <section class="text-center my-5">
+          <th:block th:if="${pizza != null}" th:object="${pizza}">
+            <div class="row">
+                <div class="col-6">
+                    <img th:src="*{foto}" alt="">
+                </div>
+                <div class="col-6">
+                    <h1 class="mb-5" th:text="*{nome}" />
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 th:text="*{descrizione}" />
+                        </div>
+                        <div class="col-6">
+                            <h5 class="" th:text="'€ ' + *{prezzo}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          </th:block>
+          <h2 th:unless="${pizza != null}" class="text-center">
+            No data found
+          </h2>
+        </section>
+      </div>
+    </main>
+
+    <th:block th:replace="~{fragments/resources :: bootstrapJs}"></th:block>
+  </body>
+</html>
