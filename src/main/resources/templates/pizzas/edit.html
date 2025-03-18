@@ -13,12 +13,13 @@
     <main>
       <div class="container">
         <section class="my-5">
-          <h1 class="mb-3">Modifica dati pizza</h1>
+          <h1 class="mb-3">Modifica dati pizza [[${pizza.nome}]]</h1>
           <form
             th:object="${pizza}"
             th:action="@{/pizzas/edit/{id}(id=*{id})}"
             method="post"
           >
+            <input type="hidden" name="redirect" th:value="${redirect}" />
             <div class="mb-3">
               <label for="nome" class="form-label">Nome:</label>
               <input

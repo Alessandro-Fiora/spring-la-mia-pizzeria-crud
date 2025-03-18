@@ -2,7 +2,6 @@ package org.lessons.java.spring_la_mia_pizzeria_crud.controller;
 
 
 import java.util.List;
-import org.lessons.java.spring_la_mia_pizzeria_crud.SpringLaMiaPizzeriaCrudApplication;
 import org.lessons.java.spring_la_mia_pizzeria_crud.model.Pizza;
 import org.lessons.java.spring_la_mia_pizzeria_crud.repo.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +22,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/pizzas")
 public class PizzasController {
 
-    private final SpringLaMiaPizzeriaCrudApplication springLaMiaPizzeriaCrudApplication;
-
-    private final IndexController indexController;
-
     @Autowired
     private PizzaRepository repo;
 
-    PizzasController(IndexController indexController, SpringLaMiaPizzeriaCrudApplication springLaMiaPizzeriaCrudApplication) {
-        this.indexController = indexController;
-        this.springLaMiaPizzeriaCrudApplication = springLaMiaPizzeriaCrudApplication;
-    }
-    
     @GetMapping
     public String index(Model model){
 
@@ -78,20 +68,23 @@ public class PizzasController {
         return "redirect:/pizzas";
     }
 
+    
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Integer id, Model model){
-
+    public String edit(@PathVariable Integer id, @RequestParam(value = "redirect", required = false) String redirect, Model model){
         model.addAttribute("pizza", repo.findById(id).get());
+        model.addAttribute("redirect", redirect);
         return "pizzas/edit";
     }
 
     @PostMapping("/edit/{id}")
-    public String update(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model ){
+    public String update(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, @RequestParam(value = "redirect", required = false) String redirect, Model model ){
         if(bindingResult.hasErrors()){
-            return "pizzas/edit{id}";
+            return "pizzas/edit";
         }
-
         repo.save(formPizza);
+        if ("show".equals(redirect)) {
+            return "redirect:/pizzas/" + formPizza.getId();
+        }
         return "redirect:/pizzas";
     }
     

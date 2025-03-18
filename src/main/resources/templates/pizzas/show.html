@@ -19,7 +19,16 @@
                     <img class="img-fluid" th:src="*{foto}" alt="">
                 </div>
                 <div class="col-6">
+                  <div class="d-flex justify-content-between">
                     <h1 class="mb-5" th:text="*{nome}" />
+                    <div>
+                      <a th:href="@{/pizzas/edit/{id}(id=*{id}, redirect='show')}">
+                        <button class="btn btn-warning rounded-3">
+                          <i class="fa-solid fa-pencil"></i>
+                        </button>
+                      </a>
+                    </div>
+                    </div>
                     <div class="row">
                         <div class="col-6">
                             <h5 th:text="*{descrizione}" />
