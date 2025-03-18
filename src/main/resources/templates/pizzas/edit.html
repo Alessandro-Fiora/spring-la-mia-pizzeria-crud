@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <th:block th:replace="~{fragments/resources :: styling}" />
+    <title>Pizzeria</title>
+  </head>
+  <body>
+    <header>
+      <th:block th:replace="~{fragments/navbar}" />
+    </header>
+    <main>
+      <div class="container">
+        <section class="my-5">
+          <h1 class="mb-3">Modifica dati pizza</h1>
+          <form
+            th:object="${pizza}"
+            th:action="@{/pizzas/edit/{id}(id=*{id})}"
+            method="post"
+          >
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                th:field="*{nome}"
+                th:errorClass="is-invalid"
+              />
+              <div
+                class="invalid-feedback"
+                th:if="${#fields.hasErrors('nome')}"
+              >
+                <ul>
+                  <li
+                    th:each="error : ${#fields.errors('nome')}"
+                    th:text="${error}"
+                  ></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="descrizione" class="form-label">Descrizione:</label>
+              <textarea
+                type="text"
+                class="form-control"
+                id="descrizione"
+                th:field="*{descrizione}"
+                th:errorClass="is-invalid"
+              />
+              <div
+                class="invalid-feedback"
+                th:if="${#fields.hasErrors('descrizione')}"
+              >
+                <ul>
+                  <li
+                    th:each="error : ${#fields.errors('descrizione')}"
+                    th:text="${error}"
+                  ></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="prezzo" class="form-label">Prezzo:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="nome"
+                th:field="*{prezzo}"
+                th:errorClass="is-invalid"
+                min="0"
+              />
+              <div
+                class="invalid-feedback"
+                th:if="${#fields.hasErrors('prezzo')}"
+              >
+                <ul>
+                  <li
+                    th:each="error : ${#fields.errors('prezzo')}"
+                    th:text="${error}"
+                  ></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="foto" class="form-label">Foto:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="foto"
+                th:field="*{foto}"
+                th:errorClass="is-invalid"
+              />
+              <div
+                class="invalid-feedback"
+                th:if="${#fields.hasErrors('nome')}"
+              >
+                <ul>
+                  <li
+                    th:each="error : ${#fields.errors('foto')}"
+                    th:text="${error}"
+                  ></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="div d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">
+                Aggiorna dati pizza
+              </button>
+              <button type="reset" class="btn btn-warning">
+                Reset dei campi
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <th:block th:replace="~{fragments/resources :: bootstrapJs}"></th:block>
+  </body>
+</html>
