@@ -12,11 +12,11 @@
     </header>
     <main>
       <div class="container">
-        <section class="text-center my-5">
+        <section class="my-5">
           <th:block th:if="${pizza != null}" th:object="${pizza}">
             <div class="row">
                 <div class="col-6">
-                    <img th:src="*{foto}" alt="">
+                    <img class="img-fluid" th:src="*{foto}" alt="">
                 </div>
                 <div class="col-6">
                     <h1 class="mb-5" th:text="*{nome}" />
