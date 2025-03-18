@@ -35,5 +35,13 @@ public class PizzasController {
 
         return "pizzas/show";
     }
+
+    @GetMapping("/search")
+    public String searchByName(@RequestParam("search") String search, Model model){
+        List<Pizza> pizzas = repo.findByNomeContainingIgnoreCaseOrDescrizioneContaining(search, search);
+
+        model.addAttribute("pizzas", pizzas);
+        return "pizzas/index";
+    }
     
 }
