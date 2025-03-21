@@ -59,11 +59,15 @@
                           <i class="fa-solid fa-pencil"></i>
                         </button>
                       </a>
-                      <a href="#">
-                        <button class="btn btn-danger rounded-3">
+                      <form
+                        class="d-inline"
+                        th:action="@{/pizzas/delete/{id}(id=*{id})}"
+                        method="post"
+                      >
+                        <button type="submit" class="btn btn-danger rounded-3">
                           <i class="fa-solid fa-trash"></i>
                         </button>
-                      </a>
+                      </form>
                     </td>
                   </tr>
                 </tbody>
