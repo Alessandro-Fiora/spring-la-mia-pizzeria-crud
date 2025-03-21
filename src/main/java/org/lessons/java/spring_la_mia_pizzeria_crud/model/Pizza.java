@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizzas")
@@ -25,6 +26,7 @@ public class Pizza implements Serializable {
     private String nome;
 
     @Lob
+    @Size(max = 255, message = "descrizione must not be longer than 255 characters")
     private String descrizione;
 
     private String foto;
