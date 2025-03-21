@@ -27,6 +27,66 @@
                           <i class="fa-solid fa-pencil"></i>
                         </button>
                       </a>
+                      <form
+                      class="d-inline"
+                      th:action="@{/pizzas/delete/{id}(id=*{id})}"
+                      method="post"
+                    >
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        data-bs-toggle="modal"
+                        th:data-bs-target="'#modal-' + ${pizza.id}"
+                      >
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                      <div
+                        class="modal fade"
+                        th:id="'modal-' + ${pizza.id}"
+                        data-bs-backdrop="static"
+                        data-bs-keyboard="false"
+                        tabindex="-1"
+                        aria-labelledby="staticBackdropLabel"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1
+                                class="modal-title fs-5"
+                                id="staticBackdropLabel"
+                              >
+                                Elimina pizza [[*{nome}]]
+                              </h1>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Sei sicuro? L'operazione è irreversibile</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Annulla
+                              </button>
+                              <button
+                                type="submit"
+                                class="btn btn-danger rounded-3"
+                              >
+                                Elimina
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                     </div>
                     </div>
                     <div class="row">
